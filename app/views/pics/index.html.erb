@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Instapics</h1>
+
+<!-- <table> -->
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+
+    <!-- CSS Reset -->
+
+
+  <tbody>
+    <% @pics.each do |pic| %>
+      <tr>
+        <table>
+
+        <h2><%= pic.title %></h2>
+        <% if pic.photo.present? %>
+          <p id="pic-image"><%= image_tag pic.photo.url(:medium) %></p>
+        <% end %>
+
+        <td><%= link_to 'Show', pic %></td>
+        <td><%= link_to 'Edit', edit_pic_path(pic) %></td>
+        <td><%= link_to 'Destroy', pic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </table>
+      </tr>
+    <% end %>
+  </tbody>
+<!-- </table> -->
+
+<br>
+
+<%= link_to 'New Pic', new_pic_path %>
