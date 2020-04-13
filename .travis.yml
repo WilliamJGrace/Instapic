@@ -1,0 +1,13 @@
+language: ruby
+before_script:
+  - cd 'Instapic'
+rvm:
+  - 2.6.5
+cache:
+  bundler: true
+  directories:
+  - "/home/travis/.rvm/"
+before_script:
+- pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+- bin/rails db:create
+- bin/rails db:migrate

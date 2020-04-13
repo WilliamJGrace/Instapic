@@ -1,5 +1,7 @@
 class PicsController < ApplicationController
   before_action :set_pic, only: [:show, :edit, :update, :destroy]
+  before_action :require_author, only: [:edit, :update, :destroy]
+
 
   # GET /pics
   # GET /pics.json
@@ -25,6 +27,7 @@ class PicsController < ApplicationController
   # POST /pics.json
   def create
     @pic = Pic.new(pic_params)
+    @pic.user = current_user
 
     respond_to do |format|
       if @pic.save

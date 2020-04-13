@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
 <h1><%= @pic.title %></h1>
+<% if pic.photo.present? %>
+  <p id="pic-image"><%= image_tag pic.photo.url(:medium) %></p>
+<% end %>
+<h2>Pic posted by: <%= link_to pic.user.username, pic.user%></h2>
 <%= link_to 'Edit', edit_pic_path(@pic) %> |
 <%= link_to 'Back', pics_path %>

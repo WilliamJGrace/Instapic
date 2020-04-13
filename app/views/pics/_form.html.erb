@@ -18,6 +18,9 @@
       <%= form.label :photo %>
       <%= form.file_field :photo %>
     </p>
+    <% if pic.photo.present? %>
+      <p id="pic-image">Old photo: <%= image_tag pic.photo.url(:medium) %></p>
+    <% end %>
     <%= form.submit %>
   </div>
 <% end %>

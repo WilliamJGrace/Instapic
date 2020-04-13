@@ -20,10 +20,12 @@
         <% if pic.photo.present? %>
           <p id="pic-image"><%= image_tag pic.photo.url(:medium) %></p>
         <% end %>
+          <h2>Pic posted by: <%= link_to pic.user.username, pic.user%></h2>
+        <% if pic.user == current_user %>
+          <td><%= link_to 'Edit', edit_pic_path(pic) %></td>
+          <td><%= link_to 'Delete', pic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
 
-        <td><%= link_to 'Show', pic %></td>
-        <td><%= link_to 'Edit', edit_pic_path(pic) %></td>
-        <td><%= link_to 'Destroy', pic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </table>
       </tr>
     <% end %>
